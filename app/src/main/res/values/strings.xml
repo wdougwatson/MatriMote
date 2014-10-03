@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string name="app_name">Google TV Remote</string>
+  <string name="app_name">Matrimote</string>
   <string name="unkown_tgt_name">Unknown</string>
   <string name="unkown_tgt_addr">unknown address</string>
   <string name="ok_text">OK</string>
 
   <!-- Manifest labels -->
-  <string name="core_service_label">Google TV Remote Control Service</string>
-  <string name="finder_label">Connect to Google TV</string>
+  <string name="core_service_label">Matrimote Control Service</string>
+  <string name="finder_label">Connect to G-Box</string>
   <string name="config_page_label">Your build is:</string>
 
   <!--  Main menu -->
@@ -22,26 +22,26 @@
   <string name="unknown_build">Unknown</string>
 
   <!--  Device Finder - more devices -->
-  <string name="finder_searching">Searching for Google TV devices on your network.</string>
-  <string name="finder_searching_with_ssid">Searching for Google TV devices on \"%s\" network.</string>
+  <string name="finder_searching">Searching for Matricom G-Boxes on your network.</string>
+  <string name="finder_searching_with_ssid">Searching for Matricom G-Boxes on \"%s\" network.</string>
   <string name="finder_wifi_waiting">Waiting for WiFi network.</string>
   <string name="finder_add_other">Add other device</string>
   <string name="finder_connect">Connect</string>
   <string name="finder_cancel">Cancel</string>
-  <string name="finder_manual">Add Google TV manually</string>
+  <string name="finder_manual">Add G-Box manually</string>
   <string name="finder_enable">Enable</string>
   <string name="finder_configure">Configure</string>
   <string name="finder_wait">Wait</string>
-  <string name="finder_no_devices">No Google TV devices found</string>
-  <string name="finder_no_devices_with_ssid">No Google TV devices found on \"%s\"</string>
+  <string name="finder_no_devices">No Matricom G-Boxes found</string>
+  <string name="finder_no_devices_with_ssid">No Matricom G-Boxes found on \"%s\"</string>
   <string name="finder_wifi_not_available">WiFi network not available</string>
   <string name="finder_recently_connected">Recently connected devices</string>
 
   <!-- Manual IP dialog strings -->
-  <string name="manual_ip_label">Add Google TV</string>
+  <string name="manual_ip_label">Add G-Box</string>
   <string name="manual_ip_entry_label">IP Address</string>
   <string name="manual_ip_hint">xxx.xxx.xxx.xxx</string>
-  <string name="manual_ip_message">You can find IP address of your Google TV device by going to:\nSettings &gt; Network &gt; Network Information</string>
+  <string name="manual_ip_message">You can find IP address of your Matricom G-Boxes by going to:\nSettings &gt; About G-Box &gt; Status</string>
   <string name="manual_ip_error_address">Invalid address.</string>
   <string name="manual_ip_default_box_name">Unknown box</string>
   <string name="manual_ip_connect">Connect</string>
@@ -136,7 +136,7 @@
   <string name="keyboard_del">DEL</string>
 
   <!-- About -->
-  <string name="about_title">Google TV Remote</string>
+  <string name="about_title">Matrimote</string>
   <string name="about_button_tos">Terms of service</string>
   <string name="about_button_privacy_policy">Privacy policy</string>
   <string name="about_button_tutorial">Show tutorial</string>
@@ -147,10 +147,10 @@
   <string name="tutorial_header_volume">Volume</string>
   <string name="tutorial_header_webmode">Pointer Mode</string>
   <string name="tutorial_header_dpad">Swipe\&apos;n\&apos;Tap</string>
-  <string name="tutorial_desc_volume">Adjust Google TV volume by pressing volume buttons on your phone.</string>
+  <string name="tutorial_desc_volume">Adjust G-Box stream volume by pressing volume buttons on your phone.</string>
   <string name="tutorial_desc_webmode">Control the mouse pointer and use gestures to scroll and zoom on webpages.</string>
-  <string name="tutorial_desc_dpad">Navigate Google TV menus and content by swiping and tapping the directional pad.</string>
-  <string name="tutorial_button">Connect to Google TV</string>
+  <string name="tutorial_desc_dpad">Navigate G-Box menus and content by swiping and tapping the directional pad.</string>
+  <string name="tutorial_button">Connect to your G-Box</string>
 
   <!-- Links -->
   <string name="tos_link">http://m.google.com/toscountry</string>

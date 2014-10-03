@@ -1,78 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res/com.google.android.apps.tvremote"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:id="@+id/MainScreen"
   android:keepScreenOn="true"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent">
-  <com.google.android.apps.tvremote.layout.FixedLayout
-    android:id="@+id/vertical_layout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true">
 
-    <com.google.android.apps.tvremote.layout.SlidingLayout
-      android:id="@+id/slider"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent" />
-    <include layout="@layout/subview_main_buttons" app:layout_percent="37.5" />
-    <include layout="@layout/subview_bottom_buttons" app:layout_percent="12.5" />
 
-  </com.google.android.apps.tvremote.layout.FixedLayout>
-
-  <com.google.android.apps.tvremote.layout.FixedLayout
-    android:id="@+id/vertical_layout"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true">
-
-    <TableLayout
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:stretchColumns="*"
-      android:shrinkColumns="*">
-      <TableRow>
-        <ImageView
-          android:layout_height="fill_parent"
-          android:background="@drawable/empty" />
-        <ImageView
-          android:layout_height="fill_parent"
-          android:background="@drawable/empty" />
-        <ImageView
-          android:layout_height="fill_parent"
-          android:background="@drawable/empty" />
-        <com.google.android.apps.tvremote.widget.KeyCodeButton
-          android:id="@+id/button_next_page"
-          android:layout_alignParentTop="true"
-          android:layout_alignParentRight="true"
-          android:src="@drawable/icon_04_buttons_selector"
-          android:layout_height="fill_parent"
-          android:background="@drawable/background_04_selector" />
-      </TableRow>
-    </TableLayout>
-
-    <View 
-      app:layout_percent="87.5" />
-  </com.google.android.apps.tvremote.layout.FixedLayout>
-
-  <com.google.android.apps.tvremote.widget.HighlightView
-    android:id="@+id/HighlightView"
-    app:button="@drawable/button_highlight"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentRight="true" />
-
-  <com.google.android.apps.tvremote.layout.FixedLayout
+  <net.matricom.tvremote.layout.FixedLayout
     android:id="@+id/ReversedLayout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -81,14 +17,57 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentRight="true">
 
-    <View
-      android:background="@android:color/transparent" />
-
-    <RelativeLayout
+      <RelativeLayout
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
       app:layout_percent="75">
-      <com.google.android.apps.tvremote.widget.SoftDpad
+
+       <net.matricom.tvremote.widget.KeyCodeButton
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:background="@android:drawable/ic_media_previous"
+           android:id="@+id/media_skip_prev"
+           app:key_code="KEYCODE_MEDIA_PREVIOUS"
+           android:layout_above="@+id/SoftDpad"
+           android:layout_toLeftOf="@+id/media_rewind" />
+
+       <net.matricom.tvremote.widget.KeyCodeButton
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:background="@android:drawable/ic_media_rew"
+           android:id="@+id/media_rewind"
+           app:key_code="KEYCODE_MEDIA_REWIND"
+           android:layout_above="@+id/SoftDpad"
+           android:layout_toLeftOf="@+id/media_pause_play" />
+
+       <net.matricom.tvremote.widget.KeyCodeButton
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:background="@android:drawable/ic_media_play"
+          android:id="@+id/media_pause_play"
+          app:key_code="KEYCODE_MEDIA_PLAY_PAUSE"
+          android:layout_above="@+id/SoftDpad"
+          android:layout_centerHorizontal="true" />
+
+       <net.matricom.tvremote.widget.KeyCodeButton
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:background="@android:drawable/ic_media_ff"
+          android:id="@+id/media_ff"
+          app:key_code="KEYCODE_MEDIA_FAST_FORWARD"
+          android:layout_alignTop="@+id/media_pause_play"
+          android:layout_toRightOf="@+id/media_pause_play" />
+
+      <net.matricom.tvremote.widget.KeyCodeButton
+          android:id="@+id/media_skip_next"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:background="@android:drawable/ic_media_next"
+          app:key_code="KEYCODE_MEDIA_NEXT"
+          android:layout_above="@+id/SoftDpad"
+          android:layout_alignRight="@+id/SoftDpad" />
+
+      <net.matricom.tvremote.widget.SoftDpad
         app:radius_percent_ignore_touch="80"
         app:radius_percent="70"
         app:radius_percent_ok="8"
@@ -96,11 +75,62 @@
         android:id="@+id/SoftDpad"
         android:layout_width="260dp"
         android:layout_height="260dp"
-        android:layout_centerInParent="true"
         android:src="@drawable/dpad_selector"
         android:padding="16dp"
-        android:focusable="false" />
-    </RelativeLayout>
+        android:focusable="false"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-  </com.google.android.apps.tvremote.layout.FixedLayout>
+        <net.matricom.tvremote.widget.KeyCodeButton
+          android:id="@+id/nav_back"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/sh_back"
+            app:key_code="KEYCODE_BACK"
+            android:layout_below="@+id/SoftDpad"
+            android:layout_alignLeft="@+id/media_skip_prev" />
+
+      <net.matricom.tvremote.widget.KeyCodeButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/sh_home"
+          app:key_code="KEYCODE_HOME"
+          android:id="@+id/nav_home"
+          android:layout_below="@+id/SoftDpad"
+          android:layout_centerHorizontal="true" />
+
+      <net.matricom.tvremote.widget.KeyCodeButton
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@drawable/ic_action_overflow"
+          app:key_code="KEYCODE_MENU"
+          android:id="@+id/nav_menu"
+          android:layout_below="@+id/SoftDpad"
+          android:layout_alignRight="@+id/SoftDpad"
+          android:layout_alignBottom="@+id/nav_home"
+          android:layout_toEndOf="@+id/media_ff" />
+
+      <View
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:background="@drawable/circle"
+          android:layout_below="@+id/nav_home"
+          android:layout_alignStart="@+id/media_pause_play"
+          android:layout_centerHorizontal="true"
+          android:id="@+id/view"/>
+
+          <Button
+              android:layout_width="50dp"
+              android:layout_height="50dp"
+              android:background="@drawable/ic_voice_search"
+              android:paddingTop="22dp"
+              android:id="@+id/button_voice"
+              android:layout_alignBottom="@+id/view"
+              android:layout_centerHorizontal="true" />
+
+
+
+      </RelativeLayout>
+
+  </net.matricom.tvremote.layout.FixedLayout>
 </RelativeLayout>
