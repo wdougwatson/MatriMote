@@ -17,6 +17,7 @@
 package net.matricom.tvremote;
 
 import net.matricom.tvremote.TouchHandler.Mode;
+import net.matricom.tvremote.floatingactionbutton.Fab;
 import net.matricom.tvremote.layout.SlidingLayout;
 import net.matricom.tvremote.util.Action;
 import net.matricom.tvremote.widget.HighlightView;
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity
 
   private final Handler handler;
 
-  private boolean isPlaying = false;
+  private Fab mFab;
 
   /**
    * The enum represents modes of the remote controller with
@@ -127,18 +128,8 @@ public class MainActivity extends BaseActivity
         inflater.inflate(R.layout.subview_touchpad, null), 1);
     slidingLayout.setCurrentScreen(0);*/
 
-    /*ImageButton keyboardButton =
-        (ImageButton) findViewById(R.id.button_keyboard);*/
-    Button voiceButton = (Button) findViewById(R.id.button_voice);
-
     /*final ModeSelector current =
         new ModeSelector(RemoteMode.TV, null, null); */
-
-    voiceButton.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View view) {
-        showVoiceSearchActivity();
-      }
-    });
 
     SoftDpad softDpad = (SoftDpad) findViewById(R.id.SoftDpad);
     softDpad.setDpadListener(getDefaultDpadListener());
@@ -147,8 +138,20 @@ public class MainActivity extends BaseActivity
     new TouchHandler(
         findViewById(R.id.touch_pad), Mode.POINTER_MULTITOUCH, getCommands());*/
 
+    mFab = (Fab) findViewById(R.id.fab);
+    mFab.setFabColor(getResources().getColor(R.color.material_pink_primary));
+    mFab.setFabDrawable(getResources().getDrawable(R.drawable.ic_voice_search));
+    mFab.setOnClickListener(mFabClickListener);
+
     flingIntent(getIntent());
   }
+
+  View.OnClickListener mFabClickListener = new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+          showVoiceSearchActivity();
+      }
+  };
 
   @Override
   protected void onDestroy() {

@@ -87,8 +87,9 @@
           android:layout_height="wrap_content"
           android:background="@drawable/sh_back"
             app:key_code="KEYCODE_BACK"
-            android:layout_below="@+id/SoftDpad"
-            android:layout_alignLeft="@+id/media_skip_prev" />
+            android:layout_marginBottom="111dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/media_rewind" />
 
       <net.matricom.tvremote.widget.KeyCodeButton
           android:layout_width="wrap_content"
@@ -96,7 +97,7 @@
           android:background="@drawable/sh_home"
           app:key_code="KEYCODE_HOME"
           android:id="@+id/nav_home"
-          android:layout_below="@+id/SoftDpad"
+          android:layout_alignTop="@+id/nav_back"
           android:layout_centerHorizontal="true" />
 
       <net.matricom.tvremote.widget.KeyCodeButton
@@ -105,32 +106,21 @@
           android:background="@drawable/ic_action_overflow"
           app:key_code="KEYCODE_MENU"
           android:id="@+id/nav_menu"
-          android:layout_below="@+id/SoftDpad"
-          android:layout_alignRight="@+id/SoftDpad"
-          android:layout_alignBottom="@+id/nav_home"
-          android:layout_toEndOf="@+id/media_ff" />
+          android:layout_toEndOf="@+id/nav_home"
+          android:layout_alignTop="@+id/nav_home"
+          android:layout_alignBottom="@+id/nav_home" />
 
-      <View
-          android:layout_width="50dp"
-          android:layout_height="50dp"
-          android:background="@drawable/circle"
-          android:layout_below="@+id/nav_home"
-          android:layout_alignStart="@+id/media_pause_play"
-          android:layout_centerHorizontal="true"
-          android:id="@+id/view"/>
-
-          <Button
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:background="@drawable/ic_voice_search"
-              android:paddingTop="22dp"
-              android:id="@+id/button_voice"
-              android:layout_alignBottom="@+id/view"
+          <net.matricom.tvremote.floatingactionbutton.Fab
+              android:layout_width="72dp"
+              android:layout_height="72dp"
+              android:id="@+id/fab"
+              android:layout_gravity="bottom|center_horizontal"
+              android:layout_alignParentBottom="true"
               android:layout_centerHorizontal="true" />
-
 
 
       </RelativeLayout>
 
   </net.matricom.tvremote.layout.FixedLayout>
+
 </RelativeLayout>
