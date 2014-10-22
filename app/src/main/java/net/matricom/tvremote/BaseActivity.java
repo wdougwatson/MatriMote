@@ -26,8 +26,6 @@ import net.matricom.tvremote.systembartintmanager.SystemBarTintManager;
 import net.matricom.tvremote.util.Action;
 import net.matricom.tvremote.util.Debug;
 import net.matricom.tvremote.util.Utils;
-import net.matricom.tvremote.widget.SoftDpad;
-import net.matricom.tvremote.widget.SoftDpad.DpadListener;
 
 import android.content.Context;
 import android.content.Intent;
@@ -340,57 +338,6 @@ public class BaseActivity extends CoreServiceActivity
   protected boolean isLandscape() {
     return (getResources().getConfiguration().orientation ==
         Configuration.ORIENTATION_LANDSCAPE);
-  }
-
-  /**
-   * Returns a default implementation for the DpadListener.
-   */
-  protected DpadListener getDefaultDpadListener() {
-    return new DpadListener() {
-
-      public void onDpadClicked() {
-        if(getCommands() != null) {
-          Action.DPAD_CENTER.execute(getCommands());
-        }
-      }
-
-      public void onDpadMoved(SoftDpad.Direction direction, boolean pressed) {
-        Action action = translateDirection(direction, pressed);
-        if (action != null) {
-          action.execute(getCommands());
-        }
-      }
-    };
-  }
-
-  /**
-   * Translates a direction and a key pressed in an action.
-   *
-   * @param direction the direction of the movement
-   * @param pressed   {@code true} if the key was pressed
-   */
-  private static Action translateDirection(SoftDpad.Direction direction,
-      boolean pressed) {
-    switch (direction) {
-      case DOWN:
-        return pressed ? Action.DPAD_DOWN_PRESSED
-            : Action.DPAD_DOWN_RELEASED;
-
-      case LEFT:
-        return pressed ? Action.DPAD_LEFT_PRESSED
-            : Action.DPAD_LEFT_RELEASED;
-
-      case RIGHT:
-        return pressed ? Action.DPAD_RIGHT_PRESSED
-            : Action.DPAD_RIGHT_RELEASED;
-
-      case UP:
-        return pressed ? Action.DPAD_UP_PRESSED
-            : Action.DPAD_UP_RELEASED;
-
-      default:
-        return null;
-    }
   }
 
   private void connect() {

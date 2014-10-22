@@ -28,4 +28,5 @@
     <color name="material_pink_primary">#ff4081</color>
     <color name="material_pink_accent">#ff80ab</color>
     <color name="material_pink_dark">#f50057</color>
+    <color name="circle_edge">#40ffffff</color>
 </resources>

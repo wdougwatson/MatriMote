@@ -135,6 +135,13 @@
   <string name="keyboard_enter">ENTER</string>
   <string name="keyboard_del">DEL</string>
 
+  <!-- Dpad -->
+  <string name="content_desc_right_button">right</string>
+  <string name="content_desc_up_button">up</string>
+  <string name="content_desc_down_button">down</string>
+  <string name="content_desc_enter_button">enter</string>
+  <string name="content_desc_left_button">left</string>
+
   <!-- About -->
   <string name="about_title">Matrimote</string>
   <string name="about_button_tos">Terms of service</string>

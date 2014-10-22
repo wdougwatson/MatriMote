@@ -117,21 +117,5 @@ public class KeyCodeButton extends ImageButton {
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-
-    // Notify highlight layer to draw highlight
-    Context context = getContext();
-    if (context instanceof MainActivity) {
-      HighlightView highlightView = ((MainActivity) context).getHighlightView();
-      if (this.isPressed()) {
-        Rect rect = new Rect();
-        if (this.getGlobalVisibleRect(rect)) {
-          highlightView.drawButtonHighlight(rect);
-          wasPressed = true;
-        }
-      } else if (wasPressed) {
-        wasPressed = false;
-        highlightView.clearButtonHighlight();
-      }
-    }
   }
 }

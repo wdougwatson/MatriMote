@@ -22,7 +22,6 @@ import net.matricom.tvremote.layout.SlidingLayout;
 import net.matricom.tvremote.util.Action;
 import net.matricom.tvremote.widget.HighlightView;
 import net.matricom.tvremote.widget.KeyCodeButton;
-import net.matricom.tvremote.widget.SoftDpad;
 import com.google.anymote.Key;
 
 import android.app.AlertDialog;
@@ -130,9 +129,6 @@ public class MainActivity extends BaseActivity
 
     /*final ModeSelector current =
         new ModeSelector(RemoteMode.TV, null, null); */
-
-    SoftDpad softDpad = (SoftDpad) findViewById(R.id.SoftDpad);
-    softDpad.setDpadListener(getDefaultDpadListener());
 
     /* // Attach touch handler to the touchpad
     new TouchHandler(

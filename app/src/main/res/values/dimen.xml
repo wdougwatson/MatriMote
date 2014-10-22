@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dpad_control_spacing">20.0dip</dimen>
+    <dimen name="dpad_button_long_dim">73.0dip</dimen>
+    <dimen name="dpad_button_short_dim">64.0dip</dimen>
+    <dimen name="button_dim">64.0dip</dimen>
+    <dimen name="pad_wrapper_dim">250.0dip</dimen>
+    <dimen name="pad_inner_circle">104.0dip</dimen>
+</resources>
