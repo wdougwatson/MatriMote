@@ -16,13 +16,11 @@
 
 package net.matricom.tvremote;
 
-import net.matricom.tvremote.TouchHandler.Mode;
-import net.matricom.tvremote.floatingactionbutton.Fab;
 import net.matricom.tvremote.layout.SlidingLayout;
-import net.matricom.tvremote.util.Action;
 import net.matricom.tvremote.widget.HighlightView;
 import net.matricom.tvremote.widget.KeyCodeButton;
 import com.google.anymote.Key;
+import com.melnykov.fab.FloatingActionButton;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -37,7 +35,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -55,7 +52,7 @@ public class MainActivity extends BaseActivity
 
   private final Handler handler;
 
-  private Fab mFab;
+  private FloatingActionButton mFab;
 
   /**
    * The enum represents modes of the remote controller with
@@ -134,9 +131,7 @@ public class MainActivity extends BaseActivity
     new TouchHandler(
         findViewById(R.id.touch_pad), Mode.POINTER_MULTITOUCH, getCommands());*/
 
-    mFab = (Fab) findViewById(R.id.fab);
-    mFab.setFabColor(getResources().getColor(R.color.material_pink_primary));
-    mFab.setFabDrawable(getResources().getDrawable(R.drawable.ic_voice_search));
+    mFab = (FloatingActionButton) findViewById(R.id.fab);
     mFab.setOnClickListener(mFabClickListener);
 
     flingIntent(getIntent());

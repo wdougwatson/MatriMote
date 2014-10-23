@@ -23,4 +23,7 @@ dependencies {
     compile files('libs/anymote.jar')
     compile files('libs/bcprov-jdk15-143.jar')
     compile files('libs/polo.jar')
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.+'
+    compile 'com.melnykov:floatingactionbutton:1.0.+'
+    compile 'com.github.traex.rippleeffect:library:1.1'
 }

@@ -2,6 +2,7 @@
 <RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:ripple="http://schemas.android.com/apk/res-auto"
   android:id="@+id/MainScreen"
   android:keepScreenOn="true"
   android:layout_width="fill_parent"
@@ -193,14 +194,29 @@
           android:layout_alignTop="@+id/nav_home"
           android:layout_alignBottom="@+id/nav_home" />
 
-          <net.matricom.tvremote.floatingactionbutton.Fab
-              android:id="@+id/fab"
-              android:layout_width="72dp"
-              android:layout_height="72dp"
-              android:layout_gravity="bottom|center_horizontal"
-              android:layout_marginBottom="30dp"
-              android:layout_alignParentBottom="true"
-              android:layout_centerHorizontal="true" />
+          <com.andexert.library.RippleView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:padding="5dp"
+              ripple:type="simpleRipple"
+              android:layout_centerHorizontal="true"
+              ripple:ripplePadding="6dp"
+              android:layout_marginLeft="16dp"
+              android:layout_marginRight="16dp"
+              android:layout_marginBottom="16dp"
+              android:layout_below="@+id/nav_home">
+
+              <com.melnykov.fab.FloatingActionButton
+                  android:id="@+id/fab"
+                  android:layout_width="72dp"
+                  android:layout_height="72dp"
+                  android:layout_marginBottom="30dp"
+                  android:layout_alignParentBottom="true"
+                  android:layout_centerHorizontal="true"
+                  android:src="@drawable/ic_voice_search"
+                  ripple:fab_colorNormal="@color/material_pink_primary"
+                  ripple:fab_colorPressed="@color/material_pink_accent"/>
+          </com.andexert.library.RippleView>
 
       </RelativeLayout>
 

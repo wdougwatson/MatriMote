@@ -22,7 +22,6 @@ import net.matricom.tvremote.TrackballHandler.Listener;
 import net.matricom.tvremote.TrackballHandler.Mode;
 import net.matricom.tvremote.protocol.ICommandSender;
 import net.matricom.tvremote.protocol.QueuingSender;
-import net.matricom.tvremote.systembartintmanager.SystemBarTintManager;
 import net.matricom.tvremote.util.Action;
 import net.matricom.tvremote.util.Debug;
 import net.matricom.tvremote.util.Utils;
@@ -36,15 +35,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Toast;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.concurrent.TimeUnit;
 
