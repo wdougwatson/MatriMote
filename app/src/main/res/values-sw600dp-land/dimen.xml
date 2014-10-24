@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_dim">84dp</dimen>
+    <dimen name="dpad_button_long_dim">73dp</dimen>
+    <dimen name="dpad_button_short_dim">84dp</dimen>
+    <dimen name="dpad_control_spacing">20dp</dimen>
+    <dimen name="dpad_height">320dp</dimen>
+    <dimen name="dpad_inner_circle">104dp</dimen>
+    <dimen name="dpad_wrapper_dim">300dp</dimen>
+    <dimen name="nav_buttons_height">200dp</dimen>
+    <dimen name="nav_buttons_width">90dp</dimen>
+    <dimen name="play_control_button_spacing">30dp</dimen>
+    <dimen name="play_control_button_size">65dp</dimen>
+</resources>
