@@ -6,73 +6,21 @@
     android:id="@+id/MainScreen"
     android:keepScreenOn="true"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:layout_marginTop="60dp" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        app:layout_percent="75">
-
-        <RelativeLayout
-            android:id="@+id/play_controls"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/dpad"
-            android:padding="10dp">
-
-            <net.matricom.tvremote.widget.KeyCodeButton
-                android:layout_width="@dimen/play_control_button_size"
-                android:layout_height="@dimen/play_control_button_size"
-                android:background="@android:drawable/ic_media_play"
-                android:id="@+id/media_pause_play"
-                app:key_code="KEYCODE_MEDIA_PLAY_PAUSE"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="@dimen/play_control_button_spacing"
-                android:layout_marginEnd="@dimen/play_control_button_spacing" />
-
-            <net.matricom.tvremote.widget.KeyCodeButton
-                android:layout_width="@dimen/play_control_button_size"
-                android:layout_height="@dimen/play_control_button_size"
-                android:background="@android:drawable/ic_media_rew"
-                android:id="@+id/media_rewind"
-                app:key_code="KEYCODE_MEDIA_REWIND"
-                android:layout_toStartOf="@id/media_pause_play"/>
-
-            <net.matricom.tvremote.widget.KeyCodeButton
-                android:layout_width="@dimen/play_control_button_size"
-                android:layout_height="@dimen/play_control_button_size"
-                android:background="@android:drawable/ic_media_previous"
-                android:id="@+id/media_skip_prev"
-                app:key_code="KEYCODE_MEDIA_PREVIOUS"
-                android:layout_toStartOf="@id/media_rewind"
-                android:layout_marginEnd="@dimen/play_control_button_spacing" />
-
-            <net.matricom.tvremote.widget.KeyCodeButton
-                android:layout_width="@dimen/play_control_button_size"
-                android:layout_height="@dimen/play_control_button_size"
-                android:background="@android:drawable/ic_media_ff"
-                android:id="@+id/media_ff"
-                app:key_code="KEYCODE_MEDIA_FAST_FORWARD"
-                android:layout_toEndOf="@id/media_pause_play"/>
-
-            <net.matricom.tvremote.widget.KeyCodeButton
-                android:id="@+id/media_skip_next"
-                android:layout_width="@dimen/play_control_button_size"
-                android:layout_height="@dimen/play_control_button_size"
-                android:background="@android:drawable/ic_media_next"
-                app:key_code="KEYCODE_MEDIA_NEXT"
-                android:layout_toEndOf="@id/media_ff"
-                android:layout_marginStart="@dimen/play_control_button_spacing" />
-
-        </RelativeLayout>
+        android:layout_height="fill_parent" >
 
         <RelativeLayout
             android:id="@+id/dpad"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dpad_height"
+            android:layout_width="@dimen/dpad_height"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:background="@android:color/transparent">
+            android:background="@android:color/transparent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp" >
 
             <ImageView
                 android:layout_width="@dimen/dpad_wrapper_dim"
@@ -160,49 +108,106 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/play_controls"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_toEndOf="@+id/dpad" >
+
+            <net.matricom.tvremote.widget.KeyCodeButton
+                android:layout_width="@dimen/play_control_button_size"
+                android:layout_height="@dimen/play_control_button_size"
+                android:background="@android:drawable/ic_media_play"
+                android:id="@+id/media_pause_play"
+                app:key_code="KEYCODE_MEDIA_PLAY_PAUSE"
+                android:layout_centerVertical="true"
+                />
+
+            <net.matricom.tvremote.widget.KeyCodeButton
+                android:layout_width="@dimen/play_control_button_size"
+                android:layout_height="@dimen/play_control_button_size"
+                android:background="@android:drawable/ic_media_rew"
+                android:id="@+id/media_rewind"
+                app:key_code="KEYCODE_MEDIA_REWIND"
+                android:layout_above="@id/media_pause_play"
+                android:scaleType="centerInside"
+                />
+
+            <net.matricom.tvremote.widget.KeyCodeButton
+                android:layout_width="@dimen/play_control_button_size"
+                android:layout_height="@dimen/play_control_button_size"
+                android:background="@android:drawable/ic_media_previous"
+                android:id="@+id/media_skip_prev"
+                app:key_code="KEYCODE_MEDIA_PREVIOUS"
+                android:layout_above="@id/media_rewind"
+                />
+
+            <net.matricom.tvremote.widget.KeyCodeButton
+                android:layout_width="@dimen/play_control_button_size"
+                android:layout_height="@dimen/play_control_button_size"
+                android:background="@android:drawable/ic_media_ff"
+                android:id="@+id/media_ff"
+                app:key_code="KEYCODE_MEDIA_FAST_FORWARD"
+                android:layout_below="@id/media_pause_play"
+                />
+
+            <net.matricom.tvremote.widget.KeyCodeButton
+                android:id="@+id/media_skip_next"
+                android:layout_width="@dimen/play_control_button_size"
+                android:layout_height="@dimen/play_control_button_size"
+                android:background="@android:drawable/ic_media_next"
+                app:key_code="KEYCODE_MEDIA_NEXT"
+                android:layout_below="@id/media_ff"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:id="@+id/nav_controls"
             android:layout_width="@dimen/nav_buttons_width"
             android:layout_height="@dimen/nav_buttons_height"
-            android:layout_below="@+id/dpad"
-            android:layout_centerInParent="true"
-            android:padding="10dp">
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="10dp" >
 
             <net.matricom.tvremote.widget.KeyCodeButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/sh_home"
                 app:key_code="KEYCODE_HOME"
                 android:id="@+id/nav_home"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="@dimen/play_control_button_spacing"
-                android:layout_marginEnd="@dimen/play_control_button_spacing" />
-
-          <net.matricom.tvremote.widget.KeyCodeButton
-              android:id="@+id/nav_back"
-              android:layout_width="wrap_content"
-              android:layout_height="fill_parent"
-              android:background="@drawable/sh_back"
-              app:key_code="KEYCODE_BACK"
-              android:layout_toStartOf="@id/nav_home" />
+                android:layout_above="@id/nav_back"
+                />
 
             <net.matricom.tvremote.widget.KeyCodeButton
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:id="@+id/nav_back"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sh_back"
+                app:key_code="KEYCODE_BACK"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+
+            <net.matricom.tvremote.widget.KeyCodeButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/ic_action_overflow"
                 app:key_code="KEYCODE_MENU"
                 android:id="@+id/nav_menu"
-                android:layout_toEndOf="@+id/nav_home" />
+                android:layout_above="@+id/nav_home"
+                />
 
         </RelativeLayout>
 
         <com.andexert.library.RippleView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             ripple:type="simpleRipple"
             android:layout_centerHorizontal="true"
             ripple:ripplePadding="6dp"
-            android:layout_below="@+id/nav_controls">
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp" >
 
             <com.melnykov.fab.FloatingActionButton
                 android:id="@+id/fab"
