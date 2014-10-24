@@ -82,10 +82,7 @@
               android:layout_height="@dimen/dpad_height"
               android:layout_centerVertical="true"
               android:layout_centerHorizontal="true"
-              android:background="@android:color/transparent"
-              app:radius_percent_ignore_touch="80"
-              app:radius_percent="70"
-              app:radius_percent_ok="8">
+              android:background="@android:color/transparent">
 
               <ImageView
                   android:layout_width="@dimen/dpad_wrapper_dim"
