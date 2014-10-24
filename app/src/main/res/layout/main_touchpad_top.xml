@@ -171,15 +171,15 @@
 
       <RelativeLayout
           android:id="@+id/nav_controls"
-          android:layout_width="235dp"
-          android:layout_height="80dp"
+          android:layout_width="@dimen/nav_buttons_width"
+          android:layout_height="@dimen/nav_buttons_height"
           android:layout_below="@+id/dpad"
           android:layout_centerInParent="true"
           android:padding="10dp">
 
           <net.matricom.tvremote.widget.KeyCodeButton
               android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+              android:layout_height="fill_parent"
               android:background="@drawable/sh_home"
               app:key_code="KEYCODE_HOME"
               android:id="@+id/nav_home"
@@ -190,7 +190,7 @@
           <net.matricom.tvremote.widget.KeyCodeButton
               android:id="@+id/nav_back"
               android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
+              android:layout_height="fill_parent"
               android:background="@drawable/sh_back"
               app:key_code="KEYCODE_BACK"
               android:layout_toStartOf="@id/nav_home" />

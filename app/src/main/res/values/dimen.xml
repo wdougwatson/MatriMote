@@ -7,6 +7,8 @@
     <dimen name="dpad_height">280dp</dimen>
     <dimen name="dpad_inner_circle">104dp</dimen>
     <dimen name="dpad_wrapper_dim">260dp</dimen>
+    <dimen name="nav_buttons_height">80dp</dimen>
+    <dimen name="nav_buttons_width">235dp</dimen>
     <dimen name="play_control_button_spacing">20dp</dimen>
     <dimen name="play_control_button_size">50dp</dimen>
 </resources>
