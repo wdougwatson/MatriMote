@@ -66,7 +66,7 @@ import java.util.TreeSet;
 /**
  * Device discovery with mDNS.
  */
-public final class DeviceFinder extends Activity {
+public final class DeviceFinder extends BaseActivity {
   private static final String LOG_TAG = "DeviceFinder";
 
   /**
@@ -98,8 +98,6 @@ public final class DeviceFinder extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    setContentView(R.layout.device_finder_layout);
-
     previousRemoteDevice =
         getIntent().getParcelableExtra(EXTRA_REMOTE_DEVICE);
 
@@ -119,11 +117,24 @@ public final class DeviceFinder extends Activity {
             buildManualIpDialog().show();
           }
         });
-
-    getActionBar().setDisplayShowHomeEnabled(true);
   }
 
-  private void showOtherDevices() {
+    @Override
+    public int getLayoutResource() {
+        return R.layout.device_finder_layout;
+    }
+
+    @Override
+    public int getTitleResource() {
+        return R.string.switch_device;
+    }
+
+    @Override
+    public boolean showOverflowMenu() {
+        return false;
+    }
+
+    private void showOtherDevices() {
     broadcastHandler.removeMessages(DELAYED_MESSAGE);
     if (progressDialog.isShowing()) {
       progressDialog.dismiss();

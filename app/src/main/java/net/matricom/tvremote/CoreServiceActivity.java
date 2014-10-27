@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import java.util.LinkedList;
@@ -35,7 +36,7 @@ import java.util.Queue;
  * disconnection appropriate callbacks are invoked.
  *
  */
-public abstract class CoreServiceActivity extends Activity {
+public abstract class CoreServiceActivity extends ActionBarActivity {
   private static final String LOG_TAG = "CoreServiceActivity";
 
   /**

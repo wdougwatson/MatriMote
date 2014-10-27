@@ -113,7 +113,6 @@ public class MainActivity extends BaseActivity
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.main_touchpad_top);
 
     LayoutInflater inflater = LayoutInflater.from(getBaseContext());
 
@@ -137,7 +136,22 @@ public class MainActivity extends BaseActivity
     flingIntent(getIntent());
   }
 
-  View.OnClickListener mFabClickListener = new View.OnClickListener() {
+    @Override
+    public int getLayoutResource() {
+        return R.layout.main_touchpad_top;
+    }
+
+    @Override
+    public int getTitleResource() {
+        return R.string.app_name;
+    }
+
+    @Override
+    public boolean showOverflowMenu() {
+        return true;
+    }
+
+    View.OnClickListener mFabClickListener = new View.OnClickListener() {
       @Override
       public void onClick(View view) {
           showVoiceSearchActivity();

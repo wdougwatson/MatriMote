@@ -33,6 +33,7 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -42,8 +43,6 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -52,7 +51,7 @@ import java.util.concurrent.TimeUnit;
  * Automatically connects to the background service on startup.
  *
  */
-public class BaseActivity extends CoreServiceActivity
+public abstract class BaseActivity extends CoreServiceActivity
     implements ConnectionListener {
 
   private static final String LOG_TAG = "BaseActivity";
@@ -110,18 +109,25 @@ public class BaseActivity extends CoreServiceActivity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
+      setContentView(getLayoutResource());
       AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
       handler = new Handler(new ScreenDimCallback());
       trackballHandler = createTrackballHandler();
       trackballHandler.setAudioManager(am);
-      boolean translucentBars = Utils.getTranslucentBarsSupported(this);
-      if (translucentBars) {
-          Utils.setTranslucentStatus(this, true);
-          SystemBarTintManager tintManager = new SystemBarTintManager(this);
-          tintManager.setStatusBarTintEnabled(true);
-          tintManager.setStatusBarTintResource(R.color.indigo_dark);
+
+      Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+      if (toolbar != null) {
+          if (showOverflowMenu()) {
+              setSupportActionBar(toolbar);
+          }
+          toolbar.setTitle(getTitleResource());
       }
+
   }
+
+  public abstract int getLayoutResource();
+  public abstract int getTitleResource();
+  public abstract boolean showOverflowMenu();
 
   @Override
   protected void onStart() {

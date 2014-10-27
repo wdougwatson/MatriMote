@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 21
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "net.matricom.tvremote"
         minSdkVersion 18
-        targetSdkVersion 19
+        targetSdkVersion 21
     }
 
     buildTypes {
@@ -23,7 +23,7 @@ dependencies {
     compile files('libs/anymote.jar')
     compile files('libs/bcprov-jdk15-143.jar')
     compile files('libs/polo.jar')
-    compile 'com.readystatesoftware.systembartint:systembartint:1.0.+'
     compile 'com.melnykov:floatingactionbutton:1.0.+'
-    compile 'com.github.traex.rippleeffect:library:1.1'
+    compile 'com.android.support:support-v4:21.0.0'
+    compile 'com.android.support:appcompat-v7:21.0.0'
 }

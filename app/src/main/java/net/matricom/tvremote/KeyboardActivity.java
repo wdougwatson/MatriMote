@@ -91,7 +91,22 @@ public final class KeyboardActivity extends BaseActivity {
     new TouchHandler(view, Mode.POINTER_MULTITOUCH, getCommands());
   }
 
-  @Override
+    @Override
+    public int getLayoutResource() {
+        return R.layout.keyboard;
+    }
+
+    @Override
+    public int getTitleResource() {
+        return 0;
+    }
+
+    @Override
+    public boolean showOverflowMenu() {
+        return false;
+    }
+
+    @Override
   public boolean onTrackballEvent(MotionEvent event){
     if (event.getAction() == MotionEvent.ACTION_DOWN){
       finish();

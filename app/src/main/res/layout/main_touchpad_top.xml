@@ -2,11 +2,13 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:id="@+id/MainScreen"
     android:keepScreenOn="true"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -195,25 +197,15 @@
 
         </RelativeLayout>
 
-        <com.andexert.library.RippleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            ripple:type="simpleRipple"
-            android:layout_centerHorizontal="true"
-            ripple:ripplePadding="6dp"
-            android:layout_below="@+id/nav_controls">
-
-            <com.melnykov.fab.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_voice_search"
-                ripple:fab_colorNormal="@color/material_pink_primary"
-                ripple:fab_colorPressed="@color/material_pink_accent"
-                />
-
-        </com.andexert.library.RippleView>
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_voice_search"
+            app:fab_colorNormal="@color/material_pink_primary"
+            app:fab_colorPressed="@color/material_pink_accent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

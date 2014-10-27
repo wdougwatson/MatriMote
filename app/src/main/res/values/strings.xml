@@ -162,4 +162,5 @@
   <!-- Links -->
   <string name="tos_link">http://m.google.com/toscountry</string>
   <string name="privacy_link">http://m.google.com/static/en/privacy.html</string>
+    <string name="switch_device">Choose a device</string>
 </resources>

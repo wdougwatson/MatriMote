@@ -2,16 +2,18 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:id="@+id/MainScreen"
     android:keepScreenOn="true"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_marginTop="80dp" >
+    android:layout_height="fill_parent">
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_marginTop="80dp">
 
         <RelativeLayout
             android:id="@+id/dpad"
@@ -199,27 +201,19 @@
 
         </RelativeLayout>
 
-        <com.andexert.library.RippleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            ripple:type="simpleRipple"
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_voice_search"
             android:layout_centerHorizontal="true"
-            ripple:ripplePadding="6dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp" >
-
-            <com.melnykov.fab.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_voice_search"
-                ripple:fab_colorNormal="@color/material_pink_primary"
-                ripple:fab_colorPressed="@color/material_pink_accent"
-                />
-
-        </com.andexert.library.RippleView>
+            android:layout_marginEnd="10dp"
+            app:fab_colorNormal="@color/material_pink_primary"
+            app:fab_colorPressed="@color/material_pink_accent"
+            />
 
     </RelativeLayout>
 

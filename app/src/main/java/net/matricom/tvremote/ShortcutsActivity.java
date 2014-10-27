@@ -34,7 +34,6 @@ public class ShortcutsActivity extends BaseActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.shortcuts);
 
     ListView list = (ListView) findViewById(R.id.command_list);
     list.setAdapter(new ShortcutAdapter());
@@ -49,7 +48,22 @@ public class ShortcutsActivity extends BaseActivity {
     });
   }
 
-  /**
+    @Override
+    public int getLayoutResource() {
+        return R.layout.shortcuts;
+    }
+
+    @Override
+    public int getTitleResource() {
+        return R.string.shortcut_settings;
+    }
+
+    @Override
+    public boolean showOverflowMenu() {
+        return false;
+    }
+
+    /**
    * Basic adapter around the array of available shortcuts.
    */
   private class ShortcutAdapter extends BaseAdapter {

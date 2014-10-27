@@ -31,11 +31,10 @@ import android.widget.TextView;
  * About activity.
  *
  */
-public class AboutActivity extends Activity {
+public class AboutActivity extends BaseActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.about);
 
     TextView versionTextView = (TextView) findViewById(R.id.version_text);
 
@@ -61,11 +60,24 @@ public class AboutActivity extends Activity {
             startActivity(intent);
           }
         });
-
-    getActionBar().setDisplayShowHomeEnabled(true);
   }
 
-  private class GoToLinkListener implements OnClickListener {
+    @Override
+    public int getLayoutResource() {
+        return R.layout.about;
+    }
+
+    @Override
+    public int getTitleResource() {
+        return R.string.about_title;
+    }
+
+    @Override
+    public boolean showOverflowMenu() {
+        return false;
+    }
+
+    private class GoToLinkListener implements OnClickListener {
     private String link;
 
     public GoToLinkListener(int linkId) {
