@@ -11,7 +11,8 @@
   <EditText android:id="@+id/manual_ip_entry"
             android:hint="@string/manual_ip_hint"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"/>
 
   <TextView android:id="@+id/manual_ip_help"
             android:text="@string/manual_ip_message"
