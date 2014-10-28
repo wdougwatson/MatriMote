@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -12,21 +13,16 @@ import android.view.WindowManager;
  */
 public class Utils {
 
-    public static boolean getTranslucentBarsSupported(Context context) {
-        int id = context.getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
-        return id != 0 && context.getResources().getBoolean(id);
-    }
-
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    public static void setTranslucentStatus(Activity activity, boolean on) {
-        Window window = activity.getWindow();
-        WindowManager.LayoutParams params = window.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            params.flags |= bits;
-        } else {
-            params.flags &= ~bits;
+    public static String codeNameToDeviceName(String codename) {
+        String device = "";
+        switch (codename.split("_")[1]) {
+            case "k200":
+                device = "G-Box Q";
+                break;
+            case "g18":
+                device = "G-Box MX2";
+                break;
         }
-        window.setAttributes(params);
+        return device;
     }
 }

@@ -20,6 +20,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import net.matricom.tvremote.util.Utils;
+
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.DatagramPacket;
@@ -184,6 +186,7 @@ public class BroadcastDiscoveryClient implements Runnable {
    */
   private void handleResponsePacket(DatagramPacket packet) {
     String strPacket = new String(packet.getData(), 0, packet.getLength());
+    Log.d(LOG_TAG, "strPacket=" + strPacket);
     String tokens[] = strPacket.trim().split("\\s+");
 
     if (tokens.length != 3) {
@@ -192,25 +195,32 @@ public class BroadcastDiscoveryClient implements Runnable {
       return;
     }
 
-    BroadcastAdvertisement advert;
+    BroadcastAdvertisement advert = null;
     try {
       String serviceType = tokens[0];
       if (!serviceType.equals(DESIRED_SERVICE)) {
         return;
       }
       String serviceName = tokens[1];
-      int port = Integer.parseInt(tokens[2]);
-      InetAddress addr = packet.getAddress();
-      Log.v(LOG_TAG, "Broadcast response: " + serviceName + ", "
-          + addr + ", " + port);
-      advert = new BroadcastAdvertisement(serviceName, addr, port);
+      if (serviceName.contains("matricom_")) {
+          serviceName = serviceName.split("-")[0];
+          serviceName = Utils.codeNameToDeviceName(serviceName);
+          int port = Integer.parseInt(tokens[2]);
+          InetAddress addr = packet.getAddress();
+          Log.v(LOG_TAG, "Broadcast response: " + serviceName + ", "
+                  + addr + ", " + port);
+          advert = new BroadcastAdvertisement(serviceName, addr, port);
+      }
+
     } catch (NumberFormatException e) {
       return;
     }
 
-    Message message = mHandler.obtainMessage(DeviceFinder.BROADCAST_RESPONSE,
-        advert);
-    mHandler.sendMessage(message);
+    if (advert != null) {
+        Message message = mHandler.obtainMessage(DeviceFinder.BROADCAST_RESPONSE,
+                advert);
+        mHandler.sendMessage(message);
+    }
   }
 
 }

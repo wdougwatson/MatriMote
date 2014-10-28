@@ -426,12 +426,9 @@ public final class DeviceFinder extends BaseActivity {
       switch (msg.what) {
         case BROADCAST_RESPONSE:
           BroadcastAdvertisement advert = (BroadcastAdvertisement) msg.obj;
-          if (advert.getServiceName().contains("matricom_")) {
-              RemoteDevice remoteDevice = new RemoteDevice(advert.getServiceName(),
-                      advert.getServiceAddress(), advert.getServicePort());
-              Log.d(LOG_TAG, "name=" + advert.getServiceName());
-              handleRemoteDeviceAdd(remoteDevice);
-          }
+          RemoteDevice remoteDevice = new RemoteDevice(advert.getServiceName(),
+                  advert.getServiceAddress(), advert.getServicePort());
+          handleRemoteDeviceAdd(remoteDevice);
           break;
       }
     }
