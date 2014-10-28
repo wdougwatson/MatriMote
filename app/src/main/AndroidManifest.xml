@@ -9,78 +9,79 @@
           android:versionName="1.0.2"
           android:installLocation="auto">
 
-  <application android:icon="@drawable/ic_launcher"
-               android:label="@string/app_name"
-               android:theme="@style/AppTheme">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
-    <activity android:name=".StartupActivity" android:noHistory="true">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-      <intent-filter>
-        <action android:name="android.intent.action.SEND"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-        <data android:mimeType="text/plain"/>
-      </intent-filter>
-    </activity>
+    <uses-feature android:required="true" android:name="android.hardware.touchscreen" />
+    <uses-feature android:required="true" android:name="android.hardware.wifi" />
 
-    <activity android:name="MainActivity"
-              android:configChanges="orientation|keyboardHidden"
-              android:windowSoftInputMode="adjustPan"
-              android:screenOrientation="sensor" />
+    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="21" />
 
-    <activity android:name="KeyboardActivity"
-              android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
-              android:configChanges="orientation|keyboardHidden"
-              android:screenOrientation="sensor"
-              android:parentActivityName=".MainActivity">
-              <meta-data
-                  android:name="android.support.PARENT_ACTIVITY"
-                  android:value="KeyboardActivity" />
-    </activity>
+    <supports-screens android:smallScreens="false" />
 
-    <activity android:name="ShortcutsActivity"
-              android:windowSoftInputMode="adjustPan"
-              android:configChanges="orientation|keyboardHidden"
-              android:screenOrientation="portrait"/>
+    <application android:icon="@drawable/ic_launcher"
+                 android:label="@string/app_name"
+                 android:theme="@style/AppTheme">
 
-    <activity android:name="DeviceFinder"
-              android:label="@string/finder_label"
-              android:launchMode="singleTop"/>
+        <activity android:name=".StartupActivity" android:noHistory="true">
+          <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
+          <intent-filter>
+              <action android:name="android.intent.action.SEND"/>
+              <category android:name="android.intent.category.DEFAULT"/>
+              <data android:mimeType="text/plain"/>
+          </intent-filter>
+        </activity>
 
-    <activity android:name="PairingActivity"
-              android:label="@string/pairing_activity_label"
-              android:launchMode="singleTop"/>
+        <activity android:name="MainActivity"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:windowSoftInputMode="adjustPan"
+                  android:screenOrientation="sensor" />
 
-    <activity android:name="AboutActivity"
-              android:screenOrientation="portrait"
-              android:parentActivityName=".MainActivity">
-              <meta-data
-                  android:name="android.support.PARENT_ACTIVITY"
-                  android:value="AboutActivity" />
-    </activity>
+        <activity android:name="KeyboardActivity"
+                  android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:screenOrientation="sensor"
+                  android:parentActivityName=".MainActivity">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="KeyboardActivity" />
+        </activity>
 
-    <activity android:name="TutorialActivity"
-              android:launchMode="singleTask"
-              android:screenOrientation="portrait" />
+        <activity android:name="ShortcutsActivity"
+                  android:windowSoftInputMode="adjustPan"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:screenOrientation="portrait"/>
 
-    <service android:name="CoreService"
-             android:label="@string/core_service_label"
-             android:enabled="true"
-             android:exported="true"
-             android:permission="android.permission.INTERNET"/>
+        <activity android:name="DeviceFinder"
+                  android:label="@string/finder_label"
+                  android:launchMode="singleTop"/>
 
-  </application>
+        <activity android:name="PairingActivity"
+                  android:label="@string/pairing_activity_label"
+                  android:launchMode="singleTop"/>
 
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.VIBRATE" />
+        <activity android:name="AboutActivity"
+                  android:screenOrientation="portrait"
+                  android:parentActivityName=".MainActivity">
+                  <meta-data
+                      android:name="android.support.PARENT_ACTIVITY"
+                      android:value="AboutActivity" />
+        </activity>
 
-  <uses-feature android:required="true" android:name="android.hardware.touchscreen" />
-  <uses-feature android:required="true" android:name="android.hardware.wifi" />
+        <activity android:name="TutorialActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait" />
 
-  <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="19" />
+        <service android:name="CoreService"
+                 android:label="@string/core_service_label"
+                 android:enabled="true"
+                 android:exported="true"
+                 android:permission="android.permission.INTERNET"/>
 
-  <supports-screens android:smallScreens="false" />
+    </application>
+
 </manifest>

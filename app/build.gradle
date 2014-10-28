@@ -6,8 +6,6 @@ android {
 
     defaultConfig {
         applicationId "net.matricom.tvremote"
-        minSdkVersion 18
-        targetSdkVersion 21
     }
 
     buildTypes {
