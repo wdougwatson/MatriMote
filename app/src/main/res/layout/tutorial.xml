@@ -12,6 +12,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:textSize="30sp"
+    android:textColor="@color/white"
     android:layout_marginBottom="8dip"
     android:text="@string/tutorial_header" />
 
@@ -133,6 +134,7 @@
       android:textSize="18sp"
       android:paddingLeft="26dip"
       android:paddingRight="26dip"
+      android:textColor="@color/white"
       android:text="@string/tutorial_button"/>
   </LinearLayout>
 

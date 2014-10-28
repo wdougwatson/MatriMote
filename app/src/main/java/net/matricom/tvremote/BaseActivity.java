@@ -122,7 +122,6 @@ public abstract class BaseActivity extends CoreServiceActivity
           }
           toolbar.setTitle(getTitleResource());
       }
-
   }
 
   public abstract int getLayoutResource();
