@@ -398,7 +398,7 @@ public final class DeviceFinder extends BaseActivity {
             if (progressDialog.isShowing()) {
               progressDialog.dismiss();
             }
-            buildBroadcastTimeoutDialog().show();
+            showOtherDevices();
             break;
   
           case GTV_DEVICE_FOUND:
@@ -427,6 +427,7 @@ public final class DeviceFinder extends BaseActivity {
           BroadcastAdvertisement advert = (BroadcastAdvertisement) msg.obj;
           RemoteDevice remoteDevice = new RemoteDevice(advert.getServiceName(),
               advert.getServiceAddress(), advert.getServicePort());
+          Log.d(LOG_TAG, "name=" + advert.getServiceName());
           handleRemoteDeviceAdd(remoteDevice);
           break;
       }
@@ -439,17 +440,6 @@ public final class DeviceFinder extends BaseActivity {
 
       // Notify data adapter and update title.
       dataAdapter.notifyDataSetChanged();
-
-      // Show confirmation dialog only for the first STB and only if progress
-      // dialog is visible.
-      if ((trackedDevices.size() == 1) && progressDialog.isShowing()) {
-        broadcastHandler.removeMessages(DELAYED_MESSAGE);
-        // delayed automatic adding
-        Message message = DelayedMessage.GTV_DEVICE_FOUND
-            .obtainMessage(broadcastHandler);
-        broadcastHandler.sendMessageDelayed(message,
-            getResources().getInteger(R.integer.gtv_finder_reconnect_delay));
-      }
     }
   }
 
