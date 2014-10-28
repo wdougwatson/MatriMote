@@ -15,7 +15,7 @@
     <uses-feature android:required="true" android:name="android.hardware.touchscreen" />
     <uses-feature android:required="true" android:name="android.hardware.wifi" />
 
-    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="21" />
+    <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="21" />
 
     <supports-screens android:smallScreens="false" />
 
