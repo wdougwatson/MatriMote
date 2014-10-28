@@ -17,6 +17,7 @@
 package net.matricom.tvremote;
 
 import net.matricom.tvremote.util.Debug;
+import net.matricom.tvremote.widget.MaterialEditText;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,6 +28,7 @@ import android.content.Intent;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -114,7 +116,7 @@ public final class DeviceFinder extends BaseActivity {
     ((Button) findViewById(R.id.button_manual)).setOnClickListener(
         new View.OnClickListener() {
           public void onClick(View v) {
-            buildManualIpDialog().show();
+            showManualIpDialog();
           }
         });
   }
@@ -416,8 +418,7 @@ public final class DeviceFinder extends BaseActivity {
             }
   
             progressDialog.dismiss();
-            confirmationDialog = buildConfirmationDialog(toConnect);
-            confirmationDialog.show();
+            showConfirmationDialog(toConnect);
             break;
         }
       }
@@ -479,115 +480,174 @@ public final class DeviceFinder extends BaseActivity {
     return dialog;
   }
 
-  private AlertDialog buildConfirmationDialog(final RemoteDevice remoteDevice) {
+  private void showConfirmationDialog(final RemoteDevice remoteDevice) {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    View view = LayoutInflater.from(this).inflate(R.layout.device_info, null);
-    final TextView ipTextView =
-        (TextView) view.findViewById(R.id.device_info_ip_address);
-
-    if (remoteDevice.getName() != null) {
-      builder.setMessage(remoteDevice.getName());
-    }
-    ipTextView.setText(remoteDevice.getAddress().getHostAddress());
-
-    return builder
-        .setTitle(R.string.finder_label)
-        .setCancelable(false)
-        .setPositiveButton(R.string.finder_connect,
-            new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialogInterface, int id) {
-                connectToEntry(remoteDevice);
-              }
-            })
-        .setNegativeButton(
-            R.string.finder_add_other, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialogInterface, int id) {
-                showOtherDevices();
-              }
-            })
-        .create();
-  }
-
-  private AlertDialog buildManualIpDialog() {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    View view = LayoutInflater.from(this).inflate(R.layout.manual_ip, null);
-    final EditText ipEditText =
-        (EditText) view.findViewById(R.id.manual_ip_entry);
-
-    ipEditText.setFilters(new InputFilter[] {
-        new NumberKeyListener() {
-          @Override
-          protected char[] getAcceptedChars() {
-            return "0123456789.:".toCharArray();
-          }
-
-          public int getInputType() {
-            return InputType.TYPE_CLASS_NUMBER;
-          }
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        View view = LayoutInflater.from(this).inflate(R.layout.material_design_dialog, null);
+        builder.setView(view);
+        TextView title = (TextView)view.findViewById(R.id.title);
+        title.setText(R.string.manual_ip_label);
+        TextView description = (TextView) view.findViewById(R.id.description);
+        description.setText(R.string.manual_ip_message);
+        final TextView ipTextView = new TextView(this);
+        ipTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        if (remoteDevice.getName() != null) {
+            builder.setMessage(remoteDevice.getName());
         }
-    });
+        ipTextView.setText(remoteDevice.getAddress().getHostAddress());
+        LinearLayout content = (LinearLayout) view.findViewById(R.id.content);
+        content.addView(ipTextView);
+        final AlertDialog dialog = builder.show();
+        Button cancel = (Button) view.findViewById(R.id.button_negative);
+        cancel.setText(R.string.finder_add_other);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                connectToEntry(remoteDevice);
 
-    builder
-        .setPositiveButton(
-            R.string.manual_ip_connect, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int which) {
-                RemoteDevice remoteDevice = remoteDeviceFromString(
-                    ipEditText.getText().toString());
-                if (remoteDevice != null) {
-                  connectToEntry(remoteDevice);
-                } else {
-                  Toast.makeText(DeviceFinder.this,
-                      getString(R.string.manual_ip_error_address),
-                      Toast.LENGTH_LONG).show();
-                }
-              }
-            })
-        .setNegativeButton(
-            R.string.manual_ip_cancel, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int which) {
-                // do nothing
-              }
-            })
-        .setCancelable(true)
-        .setTitle(R.string.manual_ip_label)
-        .setMessage(R.string.manual_ip_entry_label)
-        .setView(view);
-    return builder.create();
-  }
-
-  private AlertDialog buildBroadcastTimeoutDialog() {
-    String message;
-    String networkName = getNetworkName();
-    if (!TextUtils.isEmpty(networkName)) {
-      message = getString(R.string.finder_no_devices_with_ssid, networkName);
+            }
+        });
+        Button ok = (Button) view.findViewById(R.id.button_positive);
+        ok.setText(R.string.finder_connect);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                showOtherDevices();
+            }
+        });
     } else {
-      message = getString(R.string.finder_no_devices);
-    }
+        View view = LayoutInflater.from(this).inflate(R.layout.device_info, null);
+        final TextView ipTextView =
+                (TextView) view.findViewById(R.id.device_info_ip_address);
 
-    return buildTimeoutDialog(message,
-        new DialogInterface.OnClickListener() {
-      public void onClick(DialogInterface dialogInterface, int id) {
-        startBroadcast();
-      }
-    });
+        if (remoteDevice.getName() != null) {
+            builder.setMessage(remoteDevice.getName());
+        }
+        ipTextView.setText(remoteDevice.getAddress().getHostAddress());
+
+        builder
+            .setTitle(R.string.finder_label)
+            .setCancelable(false)
+            .setPositiveButton(R.string.finder_connect,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogInterface, int id) {
+                            connectToEntry(remoteDevice);
+                        }
+                    })
+            .setNegativeButton(
+                    R.string.finder_add_other, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialogInterface, int id) {
+                            showOtherDevices();
+                        }
+                    })
+            .show();
+    }
   }
 
-  private AlertDialog buildTimeoutDialog(CharSequence message,
-      DialogInterface.OnClickListener retryListener) {
+  private void showManualIpDialog() {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    View view;
+    final MaterialEditText editText = new MaterialEditText(this);
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        view = LayoutInflater.from(this).inflate(R.layout.material_design_dialog, null);
+        builder.setView(view);
+        TextView title = (TextView)view.findViewById(R.id.title);
+        title.setText(R.string.manual_ip_label);
+        TextView description = (TextView) view.findViewById(R.id.description);
+        description.setText(R.string.manual_ip_message);
+        editText.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        editText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_CLASS_PHONE);
+        editText.setHint(R.string.manual_ip_hint);
+        editText.setThemeColor(getResources().getColor(R.color.material_pink_primary));
+        editText.setTextColor(getResources().getColor(R.color.black));
+        editText.setFilters(new InputFilter[]{
+                new NumberKeyListener() {
+                    @Override
+                    protected char[] getAcceptedChars() {
+                        return "0123456789.:".toCharArray();
+                    }
 
-    return builder
-        .setMessage(message)
-        .setCancelable(false)
-        .setPositiveButton(R.string.finder_wait, retryListener)
-        .setNegativeButton(
-            R.string.finder_cancel, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialogInterface, int id) {
-                setResult(RESULT_CANCELED, null);
-                finish();
-              }
-            })
-        .create();
+                    public int getInputType() {
+                        return InputType.TYPE_CLASS_NUMBER;
+                    }
+                }
+        });
+        LinearLayout content = (LinearLayout) view.findViewById(R.id.content);
+        content.addView(editText);
+        final AlertDialog dialog = builder.show();
+        Button cancel = (Button) view.findViewById(R.id.button_negative);
+        cancel.setText(R.string.manual_ip_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+        Button ok = (Button) view.findViewById(R.id.button_positive);
+        ok.setText(R.string.manual_ip_connect);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                RemoteDevice remoteDevice = remoteDeviceFromString(
+                        editText.getText().toString());
+                if (remoteDevice != null) {
+                    connectToEntry(remoteDevice);
+                } else {
+                    Toast.makeText(DeviceFinder.this,
+                            getString(R.string.manual_ip_error_address),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    } else {
+        view = LayoutInflater.from(this).inflate(R.layout.manual_ip, null);
+        final EditText ipEditText =
+                (EditText) view.findViewById(R.id.manual_ip_entry);
+        ipEditText.setFilters(new InputFilter[] {
+                new NumberKeyListener() {
+                    @Override
+                    protected char[] getAcceptedChars() {
+                        return "0123456789.:".toCharArray();
+                    }
+
+                    public int getInputType() {
+                        return InputType.TYPE_CLASS_NUMBER;
+                    }
+                }
+        });
+        builder
+            .setPositiveButton(
+                    R.string.manual_ip_connect, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            RemoteDevice remoteDevice = remoteDeviceFromString(
+                                    ipEditText.getText().toString());
+                            if (remoteDevice != null) {
+                                connectToEntry(remoteDevice);
+                            } else {
+                                Toast.makeText(DeviceFinder.this,
+                                        getString(R.string.manual_ip_error_address),
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    })
+            .setNegativeButton(
+                    R.string.manual_ip_cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+            .setCancelable(true)
+            .setTitle(R.string.manual_ip_label)
+            .setMessage(R.string.manual_ip_entry_label)
+            .setView(view)
+            .show();
+    }
   }
 
   private AlertDialog buildNoWifiDialog() {
@@ -616,8 +676,10 @@ public final class DeviceFinder extends BaseActivity {
     if ((progressDialog != null) && progressDialog.isShowing()) {
       progressDialog.dismiss();
     }
-    progressDialog = newDialog;
-    newDialog.show();
+    if (newDialog != null && !newDialog.isShowing()) {
+        progressDialog = newDialog;
+        newDialog.show();
+    }
   }
 
   private RemoteDevice remoteDeviceFromString(String text) {

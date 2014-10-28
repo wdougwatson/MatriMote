@@ -35,12 +35,19 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import net.matricom.tvremote.widget.MaterialEditText;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -155,33 +162,69 @@ public class PairingActivity extends CoreServiceActivity {
     new Thread(pairing).start();
   }
 
-  private AlertDialog createPairingDialog(final PairingClientThread client) {
+  private void createPairingDialog(final PairingClientThread client) {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    View view =
-        LayoutInflater.from(this).inflate(R.layout.pairing, null);
-    final EditText pinEditText =
-        (EditText) view.findViewById(R.id.pairing_pin_entry);
-
-    builder
-        .setPositiveButton(
-            R.string.pairing_ok, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int which) {
-                alertDialog = null;
-                client.setSecret(pinEditText.getText().toString());
-              }
-            })
-        .setNegativeButton(
-            R.string.pairing_cancel, new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int which) {
-                alertDialog = null;
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        View view = LayoutInflater.from(this).inflate(R.layout.material_design_dialog, null);
+        builder.setView(view);
+        TextView title = (TextView)view.findViewById(R.id.title);
+        title.setText(R.string.pairing_label);
+        TextView description = (TextView) view.findViewById(R.id.description);
+        description.setText(remoteDevice.getName());
+        final MaterialEditText editText = new MaterialEditText(this);
+        editText.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+        editText.setHint(R.string.manual_ip_hint);
+        editText.setThemeColor(getResources().getColor(R.color.material_pink_primary));
+        editText.setTextColor(getResources().getColor(R.color.black));
+        LinearLayout content = (LinearLayout) view.findViewById(R.id.content);
+        content.addView(editText);
+        final AlertDialog dialog = builder.show();
+        Button cancel = (Button) view.findViewById(R.id.button_negative);
+        cancel.setText(R.string.finder_add_other);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
                 client.cancel();
-              }
-            })
-        .setCancelable(false)
-        .setTitle(R.string.pairing_label)
-        .setMessage(remoteDevice.getName())
-        .setView(view);
-    return builder.create();
+
+            }
+        });
+        Button ok = (Button) view.findViewById(R.id.button_positive);
+        ok.setText(R.string.finder_connect);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                client.setSecret(editText.getText().toString());
+            }
+        });
+    } else {
+        View view =
+                LayoutInflater.from(this).inflate(R.layout.pairing, null);
+        final EditText pinEditText =
+                (EditText) view.findViewById(R.id.pairing_pin_entry);
+        builder
+                .setPositiveButton(
+                        R.string.pairing_ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                alertDialog = null;
+                                client.setSecret(pinEditText.getText().toString());
+                            }
+                        })
+                .setNegativeButton(
+                        R.string.pairing_cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                alertDialog = null;
+                                client.cancel();
+                            }
+                        })
+                .setCancelable(false)
+                .setTitle(R.string.pairing_label)
+                .setMessage(remoteDevice.getName())
+                .setView(view)
+                .show();
+    }
   }
 
   private void finishedPairing(Result result) {
@@ -345,12 +388,8 @@ public class PairingActivity extends CoreServiceActivity {
         if (pairing == null) {
           return;
         }
-        alertDialog = createPairingDialog(client);
-        alertDialog.show();
+        createPairingDialog(client);
 
-        // Focus and show keyboard
-        View pinView = alertDialog.findViewById(R.id.pairing_pin_entry);
-        pinView.requestFocus();
         showKeyboard();
       }
     });
