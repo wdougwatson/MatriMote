@@ -5,18 +5,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
   <ImageView
-      android:id="@+id/touch_pad"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:layout_centerHorizontal="true"
-      android:background="@drawable/touchpad"/>
-
-  <ImageView
       android:id="@+id/touch_pad_arrow"
       android:layout_centerInParent="true"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_centerHorizontal="true"
-      android:src="@drawable/touchpad_icon"/>
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:importantForAccessibility="no"
+      android:src="@drawable/finger_hint"
+      />
 
 </RelativeLayout>

@@ -3,22 +3,25 @@
 <RelativeLayout android:id="@+id/keyboard_layout"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
   <net.matricom.tvremote.widget.ImeInterceptView android:id="@+id/keyboard"
-      android:background="@drawable/touchpad"
       android:focusable="true"
       android:focusableInTouchMode="true"
       android:layout_width="fill_parent"
-      android:layout_height="fill_parent"/>
+      android:layout_height="fill_parent"
+      />
 
   <ImageView
       android:id="@+id/touch_pad_arrow"
       android:layout_centerInParent="true"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_centerHorizontal="true"
-      android:src="@drawable/touchpad_icon"/>
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:importantForAccessibility="no"
+      android:src="@drawable/finger_hint"
+      />
 
   <net.matricom.tvremote.widget.FadingTextView
       android:id="@+id/text_feedback_chars"
@@ -33,6 +36,7 @@
       android:scrollHorizontally="false"
       android:ellipsize="start"
       android:padding="20dp"
-      android:textSize="40dp"/>
+      android:textSize="40dp"
+      />
 
 </RelativeLayout>
