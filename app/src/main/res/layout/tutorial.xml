@@ -38,7 +38,7 @@
         <ImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginRight="12dip"
+          android:layout_marginEnd="12dip"
           android:src="@drawable/tutorial_dpad"/>
         <LinearLayout
           android:layout_width="fill_parent"
@@ -68,7 +68,7 @@
         <ImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginRight="12dip"
+          android:layout_marginEnd="12dip"
           android:src="@drawable/tutorial_webmode"/>
         <LinearLayout
           android:layout_width="fill_parent"
@@ -98,7 +98,7 @@
         <ImageView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginRight="12dip"
+          android:layout_marginEnd="12dip"
           android:src="@drawable/tutorial_volume"/>
         <LinearLayout
           android:layout_width="fill_parent"
@@ -132,8 +132,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textSize="18sp"
-      android:paddingLeft="26dip"
-      android:paddingRight="26dip"
+      android:paddingStart="26dip"
+      android:paddingEnd="26dip"
       android:textColor="@color/white"
       android:text="@string/tutorial_button"/>
   </LinearLayout>
