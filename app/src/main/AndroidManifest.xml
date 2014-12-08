@@ -53,10 +53,12 @@
 
         <activity android:name="DeviceFinder"
                   android:label="@string/finder_label"
+                  android:screenOrientation="portrait"
                   android:launchMode="singleTop"/>
 
         <activity android:name="PairingActivity"
                   android:label="@string/pairing_activity_label"
+                  android:screenOrientation="portrait"
                   android:launchMode="singleTop"/>
 
         <activity android:name="AboutActivity"
