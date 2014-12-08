@@ -50,11 +50,6 @@
                       android:value="KeyboardActivity" />
         </activity>
 
-        <activity android:name="ShortcutsActivity"
-                  android:windowSoftInputMode="adjustPan"
-                  android:configChanges="orientation|keyboardHidden"
-                  android:screenOrientation="portrait"/>
-
         <activity android:name="DeviceFinder"
                   android:label="@string/finder_label"
                   android:launchMode="singleTop"/>
