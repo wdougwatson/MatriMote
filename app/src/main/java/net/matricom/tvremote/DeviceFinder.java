@@ -285,12 +285,12 @@ public final class DeviceFinder extends BaseActivity {
 
       if (position == trackedDevices.size()) {
         return getLayoutInflater().inflate(
-            R.layout.device_list_separator_layout, null);
+            R.layout.device_list_separator_layout, parent, false);
       }
 
       if (convertView == null || !(convertView instanceof ListEntryView)) {
         liv = (ListEntryView) getLayoutInflater().inflate(
-            R.layout.device_list_item_layout, null);
+            R.layout.device_list_item_layout, parent, false);
       } else {
         liv = (ListEntryView) convertView;
       }
