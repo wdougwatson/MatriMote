@@ -36,7 +36,7 @@
       android:textStyle="bold"
       android:ellipsize="start"
       android:padding="20dp"
-      android:textSize="60dp"
+      android:textSize="60sp"
       />
 
 </RelativeLayout>
