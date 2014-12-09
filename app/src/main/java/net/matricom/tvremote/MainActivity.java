@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity
 
   private final Handler handler;
 
-  private FloatingActionButton mFab;
+  //private FloatingActionButton mFab;
 
   /**
    * The enum represents modes of the remote controller with
@@ -128,10 +128,10 @@ public class MainActivity extends BaseActivity
 
     /* // Attach touch handler to the touchpad
     new TouchHandler(
-        findViewById(R.id.touch_pad_layout), Mode.POINTER_MULTITOUCH, getCommands());*/
+        findViewById(R.id.touch_pad_layout), Mode.POINTER_MULTITOUCH, getCommands());
 
     mFab = (FloatingActionButton) findViewById(R.id.fab);
-    mFab.setOnClickListener(mFabClickListener);
+    mFab.setOnClickListener(mFabClickListener);*/
 
     flingIntent(getIntent());
   }
