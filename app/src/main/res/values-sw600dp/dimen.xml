@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="button_dim">84dp</dimen>
-    <dimen name="dpad_button_long_dim">73dp</dimen>
     <dimen name="dpad_button_short_dim">84dp</dimen>
     <dimen name="dpad_control_spacing">20dp</dimen>
     <dimen name="dpad_height">320dp</dimen>
