@@ -170,11 +170,11 @@ public class PairingActivity extends CoreServiceActivity {
         TextView title = (TextView)view.findViewById(R.id.title);
         title.setText(R.string.pairing_label);
         TextView description = (TextView) view.findViewById(R.id.description);
-        description.setText(remoteDevice.getName());
+        //description.setText(remoteDevice.getName());
         final MaterialEditText editText = new MaterialEditText(this);
         editText.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
-        editText.setHint(R.string.manual_ip_hint);
+        editText.setHint(R.string.pairing_hint);
         editText.setThemeColor(getResources().getColor(R.color.material_pink_primary));
         editText.setTextColor(getResources().getColor(R.color.black));
         LinearLayout content = (LinearLayout) view.findViewById(R.id.content);
