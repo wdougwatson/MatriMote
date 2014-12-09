@@ -240,7 +240,7 @@ public final class CoreService extends Service implements ConnectionManager {
       ++index;
     }
     if (target != null || index > 0) {
-      prefEdit.commit();
+      prefEdit.apply();
       return true;
     }
     return false;
