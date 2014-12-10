@@ -160,7 +160,6 @@ public final class CoreService extends Service implements ConnectionManager {
   @Override
   public void onDestroy() {
     storeConfig();
-    cleanupSocket();
     if (keyStoreManager != null) {
       keyStoreManager.store();
     }
