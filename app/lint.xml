@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+  <issue id="ContentDescription" severity="ignore" />
+  <issue id="ClickableViewAccessibility" severity="ignore" />
+  <issue id="DefaultLocale" severity="ignore" />
+  <issue id="DrawAllocation" severity="ignore" />
+  <issue id="HandlerLeak" severity="ignore" />
+  <issue id="IconDipSize" severity="ignore" />
+  <issue id="IconDuplicatesConfig" severity="ignore" />
+  <issue id="IconMissingDensityFolder" severity="ignore" />
+  <issue id="InflateParams" severity="ignore" />
+  <issue id="InvalidPackage" severity="ignore" />
+  <issue id="Overdraw" severity="ignore" />
+  <issue id="RelativeOverlap" severity="ignore" />
+  <issue id="TrulyRandom" severity="ignore" />
+  <issue id="UnusedResources" severity="ignore" />
+</lint>
