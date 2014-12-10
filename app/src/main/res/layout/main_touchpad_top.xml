@@ -171,28 +171,31 @@
 
             <net.matricom.tvremote.widget.KeyCodeButton
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/sh_home"
                 app:key_code="KEYCODE_HOME"
                 android:id="@+id/nav_home"
                 android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:layout_marginStart="@dimen/play_control_button_spacing"
                 android:layout_marginEnd="@dimen/play_control_button_spacing" />
 
           <net.matricom.tvremote.widget.KeyCodeButton
               android:id="@+id/nav_back"
               android:layout_width="wrap_content"
-              android:layout_height="fill_parent"
+              android:layout_height="wrap_content"
               android:background="@drawable/sh_back"
               app:key_code="KEYCODE_BACK"
+              android:layout_centerInParent="true"
               android:layout_toStartOf="@id/nav_home" />
 
             <net.matricom.tvremote.widget.KeyCodeButton
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/ic_action_overflow"
                 app:key_code="KEYCODE_MENU"
                 android:id="@+id/nav_menu"
+                android:layout_centerInParent="true"
                 android:layout_toEndOf="@+id/nav_home" />
 
         </RelativeLayout>
