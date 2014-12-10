@@ -20,10 +20,11 @@ package net.matricom.tvremote.backport;
 
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import android.util.FloatMath;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+
+import java.lang.Math;
 
 /**
  * Detects transformation gestures involving more than one pointer
@@ -356,7 +357,7 @@ public class ScaleGestureDetectorImpl implements ScaleGestureDetector {
     if (mCurrLen == -1) {
       final float cvx = mCurrFingerDiffX;
       final float cvy = mCurrFingerDiffY;
-      mCurrLen = FloatMath.sqrt(cvx * cvx + cvy * cvy);
+      mCurrLen = (float) Math.sqrt(cvx * cvx + cvy * cvy);
     }
     return mCurrLen;
   }
@@ -371,7 +372,7 @@ public class ScaleGestureDetectorImpl implements ScaleGestureDetector {
     if (mPrevLen == -1) {
       final float pvx = mPrevFingerDiffX;
       final float pvy = mPrevFingerDiffY;
-      mPrevLen = FloatMath.sqrt(pvx * pvx + pvy * pvy);
+      mPrevLen = (float) Math.sqrt(pvx * pvx + pvy * pvy);
     }
     return mPrevLen;
   }
