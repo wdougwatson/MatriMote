@@ -83,10 +83,10 @@
   <string name="tutorial_header">Quick Tips</string>
   <string name="tutorial_header_volume">Volume</string>
   <string name="tutorial_header_webmode">Pointer Mode</string>
-  <string name="tutorial_header_dpad">Swipe\&apos;n\&apos;Tap</string>
-  <string name="tutorial_desc_volume">Adjust G-Box stream volume by pressing volume buttons on your phone.</string>
+  <string name="tutorial_header_dpad">DPAD Navigation</string>
+  <string name="tutorial_desc_volume">Adjust G-Box volume by pressing volume buttons on your phone.</string>
   <string name="tutorial_desc_webmode">Control the mouse pointer and use gestures to scroll and zoom on webpages.</string>
-  <string name="tutorial_desc_dpad">Navigate G-Box menus and content by swiping and tapping the directional pad.</string>
+  <string name="tutorial_desc_dpad">Navigate G-Box menus and content by tapping the directional pad.</string>
   <string name="tutorial_button">Connect to your G-Box</string>
 
   <!-- Links -->
