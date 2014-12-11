@@ -15,11 +15,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10sp"
+        android:layout_marginTop="10dp"
         android:textSize="24sp"
         android:textColor="@color/white"
         android:text="@string/about_title"
         android:gravity="center"
-        android:drawableEnd="@drawable/about_logo"
+        android:drawableEnd="@drawable/ic_launcher"
         android:drawablePadding="20dp"
         />
 
