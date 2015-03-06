@@ -167,9 +167,9 @@
             android:id="@+id/nav_controls"
             android:layout_width="@dimen/nav_buttons_width"
             android:layout_height="@dimen/nav_buttons_height"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="10dp" >
+            android:layout_marginEnd="54dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/fab">
 
             <net.matricom.tvremote.widget.KeyCodeButton
                 android:layout_width="fill_parent"
@@ -177,8 +177,8 @@
                 android:background="@drawable/sh_home"
                 app:key_code="KEYCODE_HOME"
                 android:id="@+id/nav_home"
-                android:layout_above="@id/nav_back"
-                />
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
 
             <net.matricom.tvremote.widget.KeyCodeButton
                 android:id="@+id/nav_back"
@@ -196,8 +196,8 @@
                 android:background="@drawable/ic_action_overflow"
                 app:key_code="KEYCODE_MENU"
                 android:id="@+id/nav_menu"
-                android:layout_above="@+id/nav_home"
-                />
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 
@@ -206,14 +206,11 @@
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:src="@drawable/ic_voice_search"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="32dp"
             app:fab_colorNormal="@color/material_pink_primary"
             app:fab_colorPressed="@color/material_pink_accent"
-            />
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 

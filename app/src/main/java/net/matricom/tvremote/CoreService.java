@@ -566,7 +566,8 @@ public final class CoreService extends Service implements ConnectionManager {
         Log.d(LOG_TAG, "Connecting to: " + target);
       }
       if (sendSocket != null) {
-        throw new IllegalStateException("Already connected");
+        Log.e(LOG_TAG, "Already connected");
+        //throw new IllegalStateException("Already connected");
       }
       if (target == null) {
         changeState(State.DEVICE_FINDER);

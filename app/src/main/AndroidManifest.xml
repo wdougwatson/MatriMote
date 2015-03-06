@@ -40,7 +40,7 @@
         <activity android:name="MainActivity"
                   android:configChanges="orientation|keyboardHidden"
                   android:windowSoftInputMode="adjustPan"
-                  android:screenOrientation="portrait" />
+                  android:screenOrientation="sensor" />
 
         <activity android:name="KeyboardActivity"
                   android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
