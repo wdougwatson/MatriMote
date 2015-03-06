@@ -200,7 +200,7 @@
 
         </RelativeLayout>
 
-        <!--com.melnykov.fab.FloatingActionButton
+        <com.melnykov.fab.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="72dp"
             android:layout_height="72dp"
@@ -208,7 +208,7 @@
             app:fab_colorNormal="@color/material_pink_primary"
             app:fab_colorPressed="@color/material_pink_accent"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" / -->
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
